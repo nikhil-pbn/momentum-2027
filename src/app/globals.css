@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Hover-only styles (e.g. the Who Should Attend reveal) apply only where a real pointer can hover. */
+@custom-variant can-hover (@media (hover: hover));
+
+/* =========================================================
+   Momentum 2027 — theme
+   Every colour, font, breakpoint and animation the site uses.
+   Components style themselves with Tailwind utilities only.
+   ========================================================= */
+@theme {
+  --font-sans: var(--font-montserrat), sans-serif;
+
+  /* palette */
+  --color-ink: #1c2250; /* headings, primary text */
+  --color-body: #4a4560; /* paragraph text */
+  --color-muted: #6e6787; /* secondary text, eyebrows */
+  --color-faint: #8a83a0; /* footnotes */
+  --color-line: #e6dff2; /* borders, dividers */
+  --color-line-2: #efe9f8; /* lighter borders */
+  --color-brand: #9e44df; /* purple */
+  --color-brand-hi: #ae66e6; /* purple hover */
+  --color-accent: #4a7fe8; /* blue */
+  --color-canvas: #f8f6fd; /* page background */
+  --color-canvas-2: #eee7fa; /* alternate section background */
+  --color-bubble: #ebe3f7; /* sponsor bubbles */
+
+  /* breakpoints: `sm` (640px) is Tailwind's default; these two are ours.
+     Kept in rem like the defaults so Tailwind orders the media queries correctly. */
+  --breakpoint-nav: 62.5rem; /* 1000px: desktop nav links, two-column layouts */
+  --breakpoint-wide: 75rem; /* 1200px: 4- and 5-column grids */
+
+  /* animations */
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-floaty: floaty 7s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ---------- base look and feel ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px; /* clear the fixed nav when jumping to a section */
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }
