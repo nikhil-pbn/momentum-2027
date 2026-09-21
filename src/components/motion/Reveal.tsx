@@ -2,7 +2,7 @@
 
 import { motion, type HTMLMotionProps } from "motion/react";
 
-const tags = { div: motion.div, span: motion.span, p: motion.p, h2: motion.h2 };
+const tags = { div: motion.div, span: motion.span, p: motion.p, h1: motion.h1, h2: motion.h2 };
 
 type RevealProps = HTMLMotionProps<"div"> & {
   as?: keyof typeof tags;

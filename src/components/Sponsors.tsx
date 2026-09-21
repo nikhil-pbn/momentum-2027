@@ -90,7 +90,7 @@ export function Sponsors() {
             <h3 className="text-[15px] leading-[1.3] font-light tracking-widest uppercase sm:text-[clamp(18px,1.8vw,26px)]">
               <Lines lines={c.ctaTitle} />
             </h3>
-            <p className="max-w-50 text-xs leading-[1.6] text-white/88 sm:max-w-70 sm:text-[13px] sm:leading-[1.7]">
+            <p className="max-w-50 text-xs leading-[1.6] text-pretty text-white/88 sm:max-w-70 sm:text-[13px] sm:leading-[1.7]">
               {c.ctaBody}
             </p>
             <Button

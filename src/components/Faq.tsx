@@ -62,7 +62,7 @@ export function Faq() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.45, ease: [0.22, 0.68, 0.28, 1] }}
                     >
-                      <div className="max-w-225 px-1 pb-5.5 text-[13.5px] leading-[1.85] text-muted sm:px-2 sm:pb-8 sm:text-[15px]">
+                      <div className="px-1 pb-5.5 text-[13.5px] leading-[1.85] text-muted sm:px-2 sm:pb-8 sm:text-[15px]">
                         <Answer text={item.answer} />
                       </div>
                     </motion.div>

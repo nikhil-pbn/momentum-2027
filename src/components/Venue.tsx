@@ -28,7 +28,7 @@ export function Venue() {
               {event.venue.label}
             </div>
             <p className="mt-3.5 text-sm leading-[1.85] text-body sm:mt-5 sm:text-[14.5px] lg:max-w-120">{c.body}</p>
-            <div className="mt-6 text-[17px] leading-[1.45] font-normal tracking-[0.06em] text-[#544C67] uppercase sm:text-[clamp(18px,1.5vw,24px)]">
+            <div className="mt-6 text-[17px] leading-[1.45] font-normal tracking-[0.06em] text-[#544C67] uppercase max-md:text-center sm:text-[clamp(18px,1.5vw,24px)]">
               <Lines lines={c.tag} />
             </div>
           </Reveal>

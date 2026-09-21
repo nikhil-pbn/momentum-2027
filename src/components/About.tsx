@@ -33,6 +33,7 @@ export function About() {
             {c.paragraphs.map((paragraph, i) => (
               <p key={i} className="text-[15.5px] leading-[1.85] text-body">
                 {paragraph.text}
+                <br />
                 {"strong" in paragraph ? <strong className="font-semibold text-ink">{paragraph.strong}</strong> : null}
               </p>
             ))}
