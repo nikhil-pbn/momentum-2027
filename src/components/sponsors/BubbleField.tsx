@@ -3,14 +3,17 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useScroll, useSpring, useTransform } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
+import type { Sponsor } from "@/data/sponsors";
 import { Bubble } from "./Bubble";
 import { BUBBLES, GAP, PHONE_BUBBLES } from "./bubbles";
 import { gatherBubbles, type Box } from "./gather";
 
 const smoothstep = (t: number) => t * t * (3 - 2 * t);
 
-/** Full-bleed field of floating bubbles pulled in around the centred CTA (children) as it scrolls into view. */
-export function BubbleField({ children }: { children: ReactNode }) {
+type BubbleFieldProps = { sponsors: Sponsor[]; children: ReactNode };
+
+/** Full-bleed field of floating sponsor bubbles pulled in around the centred CTA (children) as it scrolls into view. */
+export function BubbleField({ sponsors, children }: BubbleFieldProps) {
   const fieldRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box>({ w: 0, h: 0, r: 0 });
@@ -32,15 +35,18 @@ export function BubbleField({ children }: { children: ReactNode }) {
     return () => observer.disconnect();
   }, []);
 
+  // One bubble per sponsor, in slot order; phones show only some slots.
   const scale = Math.min(1, Math.max(0.5, box.w / 1100));
-  const shown = BUBBLES.map((b, i) => ({ ...b, i, size: b.size * scale })).filter(
-    (b) => box.w >= 640 || PHONE_BUBBLES.includes(b.i),
-  );
+  const shown = sponsors
+    .slice(0, BUBBLES.length)
+    .map((_, i) => ({ ...BUBBLES[i], i, size: BUBBLES[i].size * scale }))
+    .filter((b) => box.w >= 640 || PHONE_BUBBLES.includes(b.i));
   const gathered = gatherBubbles(shown, box, GAP * scale);
 
   return (
     <div ref={fieldRef} className="relative mt-4 h-130 sm:mt-10 sm:h-170 nav:h-200">
-      {box.w > 0 && gathered.map((b) => <Bubble key={`${b.i}-${box.w}`} {...b} progress={progress} />)}
+      {box.w > 0 &&
+        gathered.map((b) => <Bubble key={`${b.i}-${box.w}`} {...b} sponsor={sponsors[b.i]} progress={progress} />)}
 
       <Reveal
         ref={ctaRef}

@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Wrap } from "@/components/ui/Wrap";
 import { copy } from "@/data/copy";
 import { event } from "@/data/event";
+import { sponsors } from "@/data/sponsors";
 
 /** Sponsor CTA with floating bubbles that gather around it like a magnet as the section scrolls through the viewport. */
 export function Sponsors() {
@@ -16,7 +17,7 @@ export function Sponsors() {
         <SectionHeading title={<Lines lines={c.title} breakOnMobile={false} />} />
       </Wrap>
 
-      <BubbleField>
+      <BubbleField sponsors={sponsors}>
         <div className="flex size-full animate-floaty flex-col items-center justify-center gap-3 rounded-full bg-accent p-6 text-center text-white shadow-[0_0_70px_rgba(74,127,232,0.28)] [--float:-12px] [animation-duration:9s] motion-reduce:animate-none sm:gap-5 sm:p-11 sm:shadow-[0_0_110px_rgba(74,127,232,0.32)]">
           <h3 className="text-[15px] leading-[1.3] font-light tracking-widest uppercase sm:text-[clamp(18px,1.8vw,26px)]">
             <Lines lines={c.ctaTitle} />

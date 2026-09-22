@@ -1,4 +1,4 @@
-/** Resting bubble layout from the design: x/y as % of the field, size in px at desktop scale. */
+/** Resting slot for each sponsor bubble, from the design: x/y as % of the field, size in px at desktop scale. */
 export const BUBBLES = [
   { x: 4, y: 6, size: 150 },
   { x: 20, y: 2, size: 120 },
