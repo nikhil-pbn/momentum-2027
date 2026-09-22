@@ -50,7 +50,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(var(--float, -20px)); /* elements can set --float for a smaller bob */
   }
 }
 

@@ -16,7 +16,7 @@ export function Button({ variant = "purple", size = "md", className, ...props }:
         size === "md" ? "px-7.5 py-3.5 text-[11px] sm:px-9.5 sm:py-4 sm:text-xs" : "px-7 py-3.5 text-[11px]",
         variant === "purple"
           ? "bg-brand text-white shadow-[0_10px_24px_rgba(155,76,219,0.22)] hover:bg-brand-hi"
-          : "bg-ink text-white hover:bg-[#2a3166]",
+          : "bg-[#171D52] text-white hover:bg-[#2a3166]",
         className,
       )}
       {...props}
