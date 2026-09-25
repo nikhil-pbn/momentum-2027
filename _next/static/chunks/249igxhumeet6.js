@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,44326,o=>{o.q("/_next/static/media/momentum-logo.0_e_4pnv16y2f.png")}]);
